@@ -1,2 +1,2 @@
 # WMCode
-Wave-Maker Code | MWA Computer Science Learning Platform
+Wave-Maker Code | Computer Science Learning Platform
