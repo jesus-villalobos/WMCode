@@ -142,6 +142,12 @@ h3 {
     clear: both;
 }
 
+h4 {
+    font: 16px bold "Arial", arial;
+    clear: both;
+    color: #8aafc2;
+}
+
 hr {
     width: 90%;
     margin: 30px;
