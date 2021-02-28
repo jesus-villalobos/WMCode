@@ -23,7 +23,7 @@
         <div class="pagebody">
             <h1> Lesson 7 </h1>
 
-            <h3> <a> Download Lesson 7 Folder </a> </h3>
+            <h3> <a href="lesson7.zip" download> Download Lesson 7 Folder </a> </h3>
 
             <hr>
 
@@ -64,11 +64,172 @@
 
         <div class="pagebody">
             <h2>Lesson Content:</h2>
+
+            <h3>The <b style="color: blue;">while</b> Loop - Motivation</h3>
+            In order to effectively introduce the idea of what the while loop does, let's look at a real-
+            life example of where a loop is used. The example that we are going to use is:
+            <br>
+            <i>Students getting lunch at lunch-time.</i>
+
+            <h4>Demonstration</h4>
+            To visualize this situation, we can think of any arbitrary line of students. The line can have any
+            number of students in it, and during the lunch period, all of them must recieve lunch. The best way
+            to ensure that everyone gets their lunch is:
+            <ol>
+                <li>Serve lunch to the first student in line</li>
+                <li>Continue serving lunch to the students behind them until there is no one left</li>
+            </ol>
+            <b>This simple process will work for ANY number of students.</b>
+
+            <br>
+
+            <i>See the slides for a more involved, visual demonstration, or the video for a walk-through
+            of the problem by Jesus.</i>
+
+
+
+            <h3>Analysis and Intuition</h3>
+            Looking at a loop like this, we recognize that it is a fool-proof method of making sure that all
+            students get their lunch. <b>While</b> there are still students in line, whoever the lunch-person
+            is will continue serving lunch. This loop (serving lunch) will only end once there are no students
+            left in the line.
+
+            <br>
+
+            If we think about this intuitively, we still go through the exact same steps that we went through
+            in the section above, just a little more clearly:
+            <ol>
+                <li>We start off with a set number of students</li>
+                <li>While there are still students left in the line, we will serve lunch</li>
+                <li>Once there is no one left in the line, we will stop serving lunch</li>
+            </ol>
+            This intuitive definition is exactly what we need to write implement this problem into Python code.
+
+
+
+            <h3>The <b style="color: blue;">while</b> Loop</h3>
+            The <i style="color: blue;">while</i> loop is a special unit of Python's control-flow syntac that
+            allows us to do <i>something</i> (purposefully vague) while a condition is
+            <i style="color: orange;">True</i>.
+            <br>
+            In this case, we will serve lunch <i style="color: blue;">while</i> there are students to serve.
+
+            <h4>The Initial Condition</h4>
+            Quite intuitively, we need some condition that begins as <i style="color: orange;">True</i> and
+            eventually becomes <i style="color: orange;">False</i>.
+            <br>
+            More often than not, we are going to make use of the Python operators
+<pre style="width= 40%"><      <=       >       >=      !=</pre>
+            to compare an end-goal with some sort of a count.
+            <br>
+            For the example of the lunch line, this can look something like:
+            <pre>
+students_in_line = 25
+while students_in_line > 0
+</pre>
+
+            <h4>The Body</h4>
+            After we have our initial condition set up, we need to give our while loop its own body.
+            This is where we’ll put anything that we want to happen in every iteration.
+            <pre>
+students_in_line = 25
+while students_in_line > 0:
+    print(“One more student got lunch!”)
+</pre>
+
+            <h4>The End-Condition</h4>
+            <b>It is VERY important to make sure that our loop ends eventually, we need to make sure that
+            our condition eventually becomes False.</b>
+            To do this, we need to decrease the number of students_in_line after every step in our loop.
+            That will look something like:
+            <pre>
+students_in_line = 25
+while students_in_line > 0:
+    print(“One more student got lunch!”)
+    students_in_line = students_in_line - 1
+</pre>
+
+
+            <h3>Refactoring Loop to Function</h3>
+            Up until this point, our loop stands on its own. With a few minor changes, we can alter our
+            loop into a fully user-enabled function.
+
+            <h4>Step 1: Function Name and Parameter</h4>
+            By now, we know that function names are important in making sure that our code is readable
+            and understandable. So, quite intuitively, a good name for this function would be
+            <i style="color: blue;">serve_lunch</i>.
+            To make this new function ready to serve lunch to ANY number of students, we can pass in
+            the number of <i style="color: orange;">students_in_line</i> as a parameter to our function.
+            This will look like:
+            <pre>def serve_lunch(students_in_line)</pre>
+
+            <h4>Step 2: Docstring</h4>
+            We can simply, include all of the things that we have talked about, previously, as our documentation
+            for this function. The name of the function is already quite telling of what it will do, but
+            documentation is never bad. It will look something like:
+            <pre>
+def serve_lunch(students_in_line):
+    """serve_lunch will serve lunch to however many students_in_line there are."""
+</pre>
+
+            <h4>Step 3: Function Body</h4>
+            The final step is to move the loop down from the previous sections. So, putting everything
+            together, and adding one final closing statement, our final function is:
+            <pre>
+def serve_lunch(students_in_line):
+    """serve_lunch will serve lunch to however many students_in_line there are."""
+    while students_in_line > 0:
+        print(“One more student got lunch!”)
+	    students_in_line = students_in_line - 1
+    print(“All students got lunch!”)
+</pre>
+
+
+            <h3>A More Involved Examlple</h3>
+            In this example, we will tie together all of the concepts that we have covered in these lessons
+            thus far. This example will include:
+            <ul>
+                <li>Variables and Assignment</li>
+                <li>Operators</li>
+                <li>Functions</li>
+                <li>Boolean Operators</li>
+                <li>The While Loop</li>
+            </ul>
+            You can watch the full walk-through in the video. There, there is a full walk-through of the function.
+            The end product is:
+            <pre>
+def make_even(x):
+    """Iterate through values from 0 to x. Even numbers
+    are going to be printed. Odd numbers are going to be multiplied by 3 and have 1 added to them.
+
+    >>> make_even(10)
+    0
+    4
+    2
+    10
+    4
+    16
+    6
+    22
+    8
+    28
+    10
+    """
+    current_value = 0
+    while current_value <= x:
+        if current_value % 2 == 1:
+            print(current_value * 3 + 1)
+        else:
+            print(current_value)
+
+        current_value = current_value + 1
+</pre>
+            <b>Can you find all of these parts in the function?</b>
+
+
+            <h1>...</h1>
+
         </div>
-
-
-
-
 
 
         <div class="footer">
