@@ -65,6 +65,166 @@
 
         <div class="pagebody">
             <h2>Lesson Content:</h2>
+            To motivate this week's lesson, lets take this situation: <br><br>
+
+            <b>Suppose we want to make a program that does the following:
+                <ul>
+                    <li>Takes in a group of usernames, and</li>
+                    <li>Greets each individual user</li>
+                </ul>
+            </b>
+
+            <i>How can we do this with the things that we know already?</i>
+
+            <h3>Assignment:</h3>
+            One valid approach would be to store each of the usernames in its own variable,
+            and refer to it that way. It would look something like:
+            <pre>
+user1 = "goBears2021"
+user2 = "awesomeGerbil89231"
+print("Hello " + user1)
+print("Hello " + user2)
+</pre>
+            <h4>Pros</h4>
+            <ul>
+                <li>It is clear which variable is assigned and printed</li>
+            </ul>
+
+            <h4>Cons</h4>
+            <ul>
+                <li>Does not allow for names to change, unless you go in and manually
+                    change what user1 and user2 are</li>
+                <li>Takes forever to write</li>
+            </ul>
+
+
+            <h3>Using Functions:</h3>
+            We could definitely use a function. It would look something like:
+            <pre>
+def greeter(user1, user2, user3):
+	print("Hello " + user1)
+print("Hello " + user2)
+print("Hello " + user3)
+</pre>
+            <h4>Pros</h4>
+            <ul>
+                <li>Looks clean</li>
+                <li>Allows for user input</li>
+                <li>Usernames can change easily</li>
+            </ul>
+
+            <h4>Cons</h4>
+            <ul>
+                <li>3 usernames HAVE to be passed in as parameters</li>
+                <li>3 print statments are redundant</li>
+            </ul>
+            <br>
+
+
+            <h2>Introducing Python Lists</h2>
+            Lists are a data structure built-in to Python, and they allow us to do exactly what we want to do.
+            <br><br>
+            Lists are a collection of data-points that can be accessed using unique list indexes.
+            <br><br>
+            Here is an image that illustrates the structure of the Python list. There is more of an explanation
+            in the video!
+            <br><br>
+            <img src="list_indexes.png" alt="Indexing image." style="width: 80%; border: 1px solid gray">
+
+            <h4>List Indexing</h4>
+            Lists contain "zero-indexed" values.
+            <br><br>
+            This means that instead of the first item being referenced as item 1,
+                    it is actually referred to as item 0.
+            <br><br>
+            We access these indexes using index notation: <b>LIST[INDEX #]</b>. Here is an example:
+<pre>
+list1 = ["this",      "is",      "the",     "sample",      "list"]
+           |            |          |            |             |
+         Item 0      Item 1      Item 2      Item 3        Item 4
+           |            |          |            |             |
+        list1[0]    list1[1]	list1[2]     list1[3]     list1[4]
+</pre>
+
+            <h4>Reassignment of Values Using Indexing</h4>
+            If we ever want to change a value in a specific place, we can use indexing.
+            It would look something like:
+            <pre>
+list1 = ["this", "is", "the", "sample", "list"]
+list1[3] = "not sample"
+list1 ---> ["this", "is", "the", "not sample", "list"]
+</pre>
+            Just as with regular assignment, we take the value on the right of the equals sign,
+            and assign it to the address on the left.
+
+
+            <h4>Solving Our Task</h4>
+            To solve this task, we are going to take advantage of the things that Python lists allow us to do.
+            Specifically, we are going to combine what we learned with the <i>while</i> loop, with our ability
+            to access values in a list using <i>indexing</i>. See the video for a more in-depth walk-through!
+            <br><br>
+            Because lists items are referenced by their index numbers (integers),
+                we can easily start from 0 and go until the end of the list.
+            <br>
+            We can make use of the while loop that we learned about in Lesson 7,
+                to easily and efficiently iterate through any list.
+            <br>
+            The basic format is:
+            <pre>
+counter = 0
+while counter < len(lst):
+	*DO SOMETHING WITH lst[counter]*
+	counter += 1
+</pre>
+
+
+            <h4>List Operations</h4>
+            Given a list, <b>demo_list</b>, we can perform the following operations:
+            <ol>
+                <li>demo_list.append(*item*)</li>
+                <ul>
+                    <li>Append means: "To add something as an attachment or supplement."</li>
+                    <li>The append method is used to add an item to THE END of a list.</li>
+                    <li>This notation can be read as:
+                        <b>To the list named *LIST*, append the item, *item* to the end.</b></li>
+                </ul>
+
+                <li>demo_list.pop()</li>
+                <ul>
+                    <li>Pop is an interesting method.</li>
+                    <li>To pop means to remove and return the last item from a list.</li>
+                    <li>This notation can be read as:
+                        <b>From the list named *LIST*, pop the last item off.</b></li>
+                </ul>
+            </ol>
+            Here are some examples:
+            <pre>
+>>> lst = [3, 4, 5, 6, 7, 8, 9, 10]
+>>> lst.pop()
+10
+>>> lst
+[3, 4, 5, 6, 7, 8, 9]
+
+>>> lst.append("Hello World")
+>>> lst
+[3, 4, 5, 6, 7, 8, 9, "Hello World"]
+
+>>> counter = 5
+>>> while counter > 0:
+.  .  . lst.pop()
+
+>>> lst
+[3, 4, 5]
+
+>>> lst.append("Today")
+>>> lst.append("Is")
+>>> lst.append("The Day")
+
+>>> lst
+[3, 4, 5, "Today", "Is", "The Day"]
+</pre>
+
+            <h1>. . .</h1>
 
         </div>
 

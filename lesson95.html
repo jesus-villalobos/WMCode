@@ -23,7 +23,7 @@
         <div class="pagebody">
             <h1> Lesson 9.5 </h1>
 
-            <h3> <a href="" download> Download Mini-Project Folder </a> </h3>
+            <h3> <a href="mini_project.zip" download> Download Mini-Project Folder </a> </h3>
 
             <hr>
 
@@ -37,7 +37,7 @@
             <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRI66RQYsQYhWIsY33wVSIbtNTnss1bmUtkCR4hYN1HK65WV1vzJSU4AWCIqEhVWRzB5N8r6KqkMUon/embed?start=false&loop=false&delayms=3000"
                 frameborder="0" width="845" height="505" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-            <!-- <h2>Recording:</h2>
+            <!-- <h2>Recording:</h2>7
             <img src="wavefavicon.png" height="400"></img> -->
 
         </div>
@@ -64,6 +64,124 @@
 
         <div class="pagebody">
             <h2>Lesson Content:</h2>
+
+            Before continuing, although we won’t use them right away, it is good to note that there are
+            additional methods for us to use on lists. On a list, lst, they are:
+            <ul>
+                <li>lst.remove(*item*) - Removes *item* from the list if it exists</li>
+                <li>lst.reverse() - Reverses the order of the list</li>
+                <li>lst.index(*item*) - Returns the index of *item* in the list</li>
+            </ul>
+
+            <h3>Real Application of Lists</h3>
+            <p>
+                Suppose we are programming an application that hosts a large number of students.
+                We want to greet them all, so our first task is to write a method that will take care of this for us.
+            </p>
+            <p><i>How can we do this now?</i></p>
+
+            <h4>Greeter -- Simple</h4>
+            <p>See the recording for a better walk-through!</p>
+
+            <p>As a beginning, the easiest way to accomplish this task is to iterate through the given list with
+            the needed information, and extract it using indexing. We can make use of our <i>while loop</i> to
+            make this lookup and extraction extra simple.</p>
+
+            <p>This will look something like:</p>
+            <pre>
+def greeter(lst):
+	counter = 0
+	while counter < len(lst):
+		print("Hello " + lst[counter] + "!")
+		counter += 1
+</pre>
+
+            <h3>New Situation</h3>
+            <p>Now that we solved the greeter problem, our product manager approaches us
+                with a different problem. They say:</p>
+
+            <p><i>“There was an error in the names where the first third of every list contained fake names.
+                Modify your greeter method to only greet the second and third thirds of every list.”</i></p>
+
+            <p>Let's go through different approaches.</p>
+
+
+            <h4>Approach 1 -- Building on Indexing</h4>
+            See the video for a better walk-through! We can simply build off what we already did above,
+            and add a condition. It will look something like:
+            <pre>
+def greeter(lst):
+	counter = 0
+	while counter < len(lst):
+		if counter > int(len(lst) / 3):
+			print("Hello " + lst[counter] + "!")
+		counter += 1
+</pre>
+
+            <h4>Approach 2 -- List Slicing</h4>
+            While the last approach definitely works, there is a much more efficient way to get <i>only</i> the
+            information that we need from the given list. We are going to use a new concept known as
+            <b>list slicing</b>. Quite literally how it sounds, we are going to cut the input list down to the
+            second and third thirds (the last 2 parts) of the list.
+
+            <p>List slicing notation is:</p>
+            <pre>*LIST*[*start_index* : *end_index*]</pre>
+            There are 3 variations to using a slice that are typically used. They are:
+            <pre>
+*LIST*[: *end_index*]       → “from the beginning to *end_index*”
+
+*LIST*[*start_index* :]     → “from *start_index* to the end”
+
+*LIST*[ : ]                 → “from the beginning to the end”
+</pre>
+            We can put this together with our list accessing using a while loop, and come up with a function like:
+            <pre>
+def greeter(lst):
+    counter = 0
+    slice = len(lst) // 3
+    new_lst = lst[slice:]
+    while counter < len(new_lst):
+		print("Hello " + new_lst[counter] + "!")
+		counter += 1
+</pre>
+
+            <h3>One More Job</h3>
+            Now, suppose our product manager approaches us with a different problem:
+
+            <p>“Great job with fixing greeter! Now, we have decided that our users need to be greeted
+                differently depending on when they joined our platform:</p>
+            <ul>
+                <li>If they joined at a multiple of 5, greet them saying, "You are a chosen one, ___"</li>
+                <li>If they joined at an even position, greet them saying, "Welcome in, ___!"</li>
+                <li>If they joined at an odd position, greet them saying, "Why hello there, ___ :)"</li>
+            </ul>
+
+            <p>Now, we can put together what we've learned with if-elif-else blocks and come up with a
+                somewhat long solution, but, in my opinion, the easiest one. It would be something like:</p>
+            <pre>
+def greeter(lst):
+    slice = int(len(lst) / 3)
+	new_lst = lst[slice:]
+	counter = 0
+	while counter < len(new_lst):
+    	if counter % 5 == 0:
+        	print("You are a chosen one, " + new_lst[counter])
+    	elif counter % 2 == 0:
+        	print("Welcome in, " + new_lst[counter] + "!")
+    	else:
+        	print("Why hello there, " + new_lst[counter] + " :)")
+    	counter += 1
+</pre>
+
+            <h3>Congrats! You made it through a real-world application of everything that we've covered!!!</h3>
+
+            <h3>Go ahead and download the <a href="mini_project.zip" download>Mini-Project Folder</a> and solve the
+                problems!</h3>
+
+            <h3>Go watch the recording if you haven't already!!</h3>
+
+            <h1>. . .</h1>
+
         </div>
 
 
